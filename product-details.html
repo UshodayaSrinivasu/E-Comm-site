@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Product Details</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>Product Details</h1>
+  <div id="details"></div>
+  <a href="products.html">Back to Products</a>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const name = params.get("name") || "Unknown";
+    document.getElementById("details").innerText = "Details for "+name;
+  </script>
+</body>
+</html>

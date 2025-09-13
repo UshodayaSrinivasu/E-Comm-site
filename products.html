@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Products</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>Products</h1>
+  <div id="productList"></div>
+  <a href="categories.html">Back to Categories</a>
+  <script src="script.js"></script>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const category = params.get("category") || "General";
+    const products = ['Item1','Item2','Item3','Item4','Item5'];
+    const container = document.getElementById("productList");
+    products.forEach(p => {
+      const div = document.createElement("div");
+      div.innerHTML = `<h3>${p} (${category})</h3>
+        <button onclick="viewDetails('${p}','${category}')">View details</button>
+        <button onclick="addToCart('${p}','${category}')">Add to Cart</button>
+        <button onclick="buyNow('${p}','${category}')">Buy Now</button>`;
+      container.appendChild(div);
+    });
+    function viewDetails(name,cat){
+      dataLayer.push({event:"view_item", item_name:name, item_category:cat});
+      window.location.href="product-details.html?name="+encodeURIComponent(name);
+    }
+    function addToCart(name,cat){
+      dataLayer.push({event:"add_to_cart", item_name:name, item_category:cat, quantity:1});
+      alert(name+" added to cart!");
+    }
+    function buyNow(name,cat){
+      dataLayer.push({event:"begin_checkout", item_name:name, item_category:cat});
+      window.location.href="checkout.html?item="+encodeURIComponent(name);
+    }
+  </script>
+</body>
+</html>

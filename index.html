@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Home - E-commerce Demo</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- INSERT GTM HEAD SNIPPET HERE -->
+</head>
+<body>
+  <!-- INSERT GTM BODY SNIPPET HERE -->
+  <header><h1>Welcome to Demo E-commerce</h1></header>
+  <main>
+    <button id="exploreBtn">Explore Products</button>
+    <button id="sellerBtn">Become a Seller</button>
+  </main>
+  <nav>
+    <a href="categories.html">Categories</a> |
+    <a href="about.html">About Us</a> |
+    <a href="contact.html">Contact</a>
+  </nav>
+  <script src="script.js"></script>
+  <script>
+    document.getElementById("exploreBtn").addEventListener("click", function(){
+      dataLayer.push({event: "explore_products"});
+      window.location.href = "categories.html";
+    });
+    document.getElementById("sellerBtn").addEventListener("click", function(){
+      dataLayer.push({event: "become_seller"});
+      alert("Seller signup page placeholder.");
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Categories</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>Categories</h1>
+  <ul>
+    <li><button onclick="viewCategory('Electronics')">Electronics</button></li>
+    <li><button onclick="viewCategory('Kitchen')">Kitchen</button></li>
+    <li><button onclick="viewCategory('Home Appliances')">Home Appliances</button></li>
+    <li><button onclick="viewCategory('Home Decor')">Home Decor</button></li>
+    <li><button onclick="viewCategory('Groceries')">Groceries</button></li>
+  </ul>
+  <a href="index.html">Back to Home</a>
+  <script src="script.js"></script>
+  <script>
+    function viewCategory(cat){
+      dataLayer.push({event: "view_category", category_name: cat});
+      window.location.href = "products.html?category=" + encodeURIComponent(cat);
+    }
+  </script>
+</body>
+</html>

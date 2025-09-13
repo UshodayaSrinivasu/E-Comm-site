@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Checkout</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>Checkout</h1>
+  <p>Checkout process for your selected item.</p>
+  <button onclick="completePurchase()">Complete Purchase</button>
+  <script>
+    function completePurchase(){
+      const params = new URLSearchParams(window.location.search);
+      const item = params.get("item") || "Unknown";
+      dataLayer.push({
+        event:"purchase",
+        transaction_id:"T"+Math.floor(Math.random()*10000),
+        value:499,
+        currency:"INR",
+        items:[{item_name:item, item_category:"General", quantity:1}]
+      });
+      window.location.href="thankyou.html";
+    }
+  </script>
+</body>
+</html>
